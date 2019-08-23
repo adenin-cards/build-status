@@ -1,0 +1,128 @@
+$type: card
+rules: []
+properties:
+  title:
+    type: element
+    xtype: at-carbon-card-title
+    title: Basic Card Sample
+    xgridcols: 12
+    xstyle: 
+    xclass: 
+    actionListeners:
+      - _start
+  content:
+    type: element
+    xtype: at-core-view
+    model: 
+    view: |-
+      {% if items.length == 0 %}
+      	<div class="font-display1 blue layout-center-center mlg plg" style="text-align:center">
+      		You have no builds to monitor!
+      	</div>
+      {% else %}
+      	<div class="layout-horizontal layout-center-aligned m">
+      		{% if value > 0 %}
+      			<at-carbon-icon icon="now:warning-filled" class="red"></at-carbon-icon>
+      		{% else %}
+      			<at-carbon-icon icon="now:checkmark" class="green"></at-carbon-icon>
+      		{% endif %}
+      		<div class="font-title pl">{{ description }}</div>
+      	</div>
+      	<hr/>
+      	{% for item in items | limit: 6 %}
+      		<div class="layout-horizontal mx mysm {% if forLoop.index > 3 %}expanded-only{% endif %}">
+      			<div class="layout-center-aligned pr py">
+      				{% if item.description == "building" %}
+      					<div class="build-monitor-status-icon background-orange"></div>
+      				{% elsif item.description == "ready" %}
+      					<div class="build-monitor-status-icon background-green"></div>
+      				{% elsif item.description == "error" %}
+      					<div class="build-monitor-status-icon background-red"></div>
+      				{% endif %}
+      			</div>
+      			<div class="layout-horizontal layout-justified" style="width:100%">
+      				<div class="layout-vertical">
+      					<div class="font-title">{{ item.title }}</div>
+      					<div class="font-body grey">{{ item.description }}</div>
+      				</div>
+      				<at-carbon-moment class="font-caption grey" datetime="{{ item.date }}" from-now ago></at-carbon-moment>
+      			</div>
+      		</div>
+      	{% endfor %}
+      {% endif %}
+
+      <style>
+      .build-monitor-status-icon {
+      	border-radius: 50%;
+        width: 16px;
+        height: 16px;
+      	opacity: 0.75;
+      }
+      </style>
+    xgridcols: 12
+    xstyle: 
+    xclass: 
+    actionListeners:
+      - _all
+    default: 
+    modelRoot: state.model
+  footer3:
+    type: element
+    title: Card Footer 3
+    xtype: at-carbon-card-footer
+    xgridcols: 12
+    modelBind: 'href: link, label: linkLabel'
+    modelRoot: state.model
+    expandable: !!bool true
+$meta:
+  cardId: !!int 12
+  preview-data: |-
+    {
+      "_action": "firstpage",
+      "_page": 1,
+      "_pageSize": 20,
+      "items": [
+        {
+          "id": "6686d547-f72c-4bcc-997b-79ffb4603b7a",
+          "date": "2019-08-23T08:50:46.113Z",
+          "link": "https://netlify-builds3.firebaseio.com/builds/5d5fa8e6c5bf2b00075d35e8/log",
+          "_type": "build-status",
+          "title": "adenin-dev",
+          "description": "error"
+        },
+        {
+          "id": "6686d547-f72c-4bcc-997b-79ffb4603b7a",
+          "date": "2019-08-23T09:48:46.113Z",
+          "link": "https://netlify-builds3.firebaseio.com/builds/5d5fa8e6c5bf2b00075d35e8/log",
+          "_type": "build-status",
+          "title": "www.adenin.com",
+          "description": "building"
+        },
+        {
+          "id": "6686d547-f72c-4bcc-997b-79ffb4603b7a",
+          "date": "2019-08-23T07:50:46.113Z",
+          "link": "https://netlify-builds3.firebaseio.com/builds/5d5fa8e6c5bf2b00075d35e8/log",
+          "_type": "build-status",
+          "title": "adenin-stage",
+          "description": "ready"
+        }
+      ],
+      "title": "Build Status",
+      "link": "",
+      "linkLabel": "All builds",
+      "actionable": true,
+      "value": 1,
+      "date": "2019-08-23T08:50:46.113Z",
+      "color": "blue",
+      "description": "1 build is currently failing."
+    }
+  preview-mode: live
+  preview-container: event
+  search-term: 
+  service-url: 
+  xclass: 
+  xstyle: 
+  code: |-
+    action.initialize = function(evt) {
+      //debugger;
+    }
