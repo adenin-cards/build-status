@@ -1,6 +1,6 @@
 {
   "name": "build-monitor",
-  "version": "0.0.1.18",
+  "version": "0.0.1.26",
   "private": true,
   "dependencies": {
     "polymer": "Polymer/polymer#master"

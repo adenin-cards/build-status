@@ -20,7 +20,7 @@ properties:
       		You have no builds to monitor!
       	</div>
       {% else %}
-      	<div class="layout-horizontal layout-center-aligned m">
+      	<div class="layout-horizontal layout-center-aligned p bb">
       		{% if value > 0 %}
       			<at-carbon-icon icon="now:warning-filled" class="red"></at-carbon-icon>
       		{% else %}
@@ -28,7 +28,6 @@ properties:
       		{% endif %}
       		<div class="font-title pl">{{ description }}</div>
       	</div>
-      	<hr/>
       	{% for item in items | limit: 6 %}
       		<div class="layout-horizontal mx mysm {% if forLoop.index > 3 %}expanded-only{% endif %}">
       			<div class="layout-center-aligned pr py">
@@ -71,11 +70,11 @@ properties:
     title: Card Footer 3
     xtype: at-carbon-card-footer
     xgridcols: 12
-    modelBind: 'href: link, label: linkLabel'
+    modelBind: 'href: link, label: linkLabel, hide: items.length == 0'
     modelRoot: state.model
     expandable: !!bool true
 $meta:
-  cardId: !!int 12
+  cardId: 54
   preview-data: |-
     {
       "_action": "firstpage",
@@ -114,7 +113,8 @@ $meta:
       "value": 1,
       "date": "2019-08-23T08:50:46.113Z",
       "color": "blue",
-      "description": "1 build is currently failing."
+      "description": "1 build is currently failing.",
+      "_hash": "06c10d8879838f7711fbfb748d33a92c"
     }
   preview-mode: live
   preview-container: event

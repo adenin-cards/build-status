@@ -11,7 +11,7 @@ CollectionModeField: null
 MaxItemsField: null
 PriorityField: null
 StreamSource: null
-CardComponent: build-monitor/build-monitor-card
+CardComponent: build-status/build-status-card
 StoreMetadataField: null
 CommonPart:
   Owner: !!int 2
@@ -27,7 +27,6 @@ ServicePart:
   ConnectorName: TestData
   ServiceName: TestData
   Url: ~/api/adenin.Development.TestData
-  ServiceParameters: '{}'
 SearchContextPart:
   Query: null
   Interface: null
