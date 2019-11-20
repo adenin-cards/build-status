@@ -70,7 +70,7 @@ properties:
     title: Card Footer 3
     xtype: at-carbon-card-footer
     xgridcols: 12
-    modelBind: 'href: link, label: linkLabel, hide: items.length == 0'
+    modelBind: 'href: link, label: linkLabel, hide: items.length < 4'
     modelRoot: state.model
     expandable: !!bool true
 $meta:
